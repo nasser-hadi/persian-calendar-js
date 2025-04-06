@@ -12,23 +12,26 @@ document.querySelector('#datePicker').addEventListener('change', function (event
     dateValue = event.target.value;
 
     if (dateValue) {
-        document.getElementById('dateDetails01').innerText = '';
 
         let date = new Date(dateValue);
         Year_G = date.getFullYear();
         Month_G = date.getMonth() + 1; // Months are zero-based
         Day_G = date.getDate();
+
+        gregorianDateDetails(dateValue);
     }
     else {
-        document.getElementById('dateDetails01').innerText = 'Please select a date.';
+        document.getElementById('year_G').innerText = 'Please select a date.';
     }
 });
 
 
-function getGregorianDateDetails() {
-    if (dateValue) {
-        document.getElementById('dateDetails01').innerText = `Year: ${Year_G} - Month: ${Month_G} - Day: ${Day_G} `;
+function gregorianDateDetails(date2) {
+    if (date2) {
+        document.getElementById('year_G').innerText= `Year : ${Year_G} `;
+        document.getElementById('month_G').innerText= `Month : ${Month_G.toString().padStart(2,'0')} `;
+        document.getElementById('day_G').innerText= `Day : ${Day_G.toString().padStart(2,'0')} `;
     } else {
-        document.getElementById('dateDetails01').innerText = 'Please select a date.';
+        document.getElementById('year_G').innerText = 'Please select a date.';
     }
 }

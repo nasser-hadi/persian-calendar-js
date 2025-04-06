@@ -3,13 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Date time picker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <title>Persian Calendar - Ver 1.0</title>
 </head>
 <body>
-    <input type="date" id="datePicker">
-    <button onclick="getGregorianDateDetails()">Get Date Details</button>
-    <p id="dateDetails01">Date : </p>
+    <header>
+        <nav class="navbar navbar-light bg-white border-bottom mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" >
+                    <h1 class="navbar-brand ">
+                        Persian<span class="text-warning">C</span><span class="text-danger">a</span><span class="text-success">l</span><span class="text-warning">e</span><span class="text-warning">n</span><span class="text-success">d</span><span class="text-primary">a</span><span class="text-danger">r</span><span class="text-primary">.</span>com<span class="text-danger">!</span>
+                    </h1>
+                </a>
+            </div>   
+        </nav>
+    </header>
+    <main class="container">
 
-    <script src="script.js"></script>
+        <div class="row">
+            <p class="col-3 font">Please Select a Date:</p>
+            <input type="date" id="datePicker" class="col-2">
+        </div>        
+        <br>  
+        <div class="row">            
+            <p class="col-2">Date Details : </p>
+            <div class="col-2">
+                <p id="year_G" >Year :</p>
+                <p id="month_G" >Month :</p>
+                <p id="day_G" >Day :</p>
+            </div>
+        </div>              
+    </main>
+    <script src="script03.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>
