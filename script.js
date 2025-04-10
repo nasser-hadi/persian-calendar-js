@@ -19,6 +19,9 @@ var b = 0;
 
 const ND = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+var NMM = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+var NWM = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+
 document.querySelector('#datePicker').addEventListener('change', function (event) {
 
     Year_P = 0;
@@ -68,10 +71,6 @@ function getPersianCalendar() {
     if (Sum_P <= 0) Year_P = Year_G - 622;
     else Year_P = Year_G - 621;
 
-    // for (i = 0, j = 1000; i < 4; i++, j /= 10) {
-    //     Year_P %= j;
-    // } //for i
-
     if (Sum_P <= 0) Sum_P += 365;
     if (b) Sum_P++;
 
@@ -100,18 +99,6 @@ function getPersianCalendar() {
     }
 }
 
-function persianDateDetails(dateP) {
-    if (dateP) {
-        document.getElementById('year_P').innerText = `Year : ${Year_P} `;
-        document.getElementById('month_P').innerText = `Month : ${Month_P.toString().padStart(2, '0')} `;
-        document.getElementById('day_P').innerText = `Day : ${Day_P.toString().padStart(2, '0')} `;
-    } else {
-        document.getElementById('year_P').innerText = `Year : `;
-        document.getElementById('month_P').innerText = `Month : `;
-        document.getElementById('day_P').innerText = `Day : `;
-    }
-}
-
 function gregorianDateDetails(dateG) {
 
     let lable = document.getElementById('notice');
@@ -120,13 +107,29 @@ function gregorianDateDetails(dateG) {
         document.getElementById('year_G').innerText = `Year : ${Year_G} `;
         document.getElementById('month_G').innerText = `Month : ${Month_G.toString().padStart(2, '0')} `;
         document.getElementById('day_G').innerText = `Day : ${Day_G.toString().padStart(2, '0')} `;
+        document.getElementById('date_G').innerText = `Date : ${NMM[Month_G-1]} ${Day_G.toString().padStart(2, '0')} - ${Year_G} `;
 
         lable.classList.remove('text-danger');
     } else {
         document.getElementById('year_G').innerText = `Year : `;
         document.getElementById('month_G').innerText = `Month : `;
         document.getElementById('day_G').innerText = `Day : `;
+        document.getElementById('date_G').innerText = `Date : `;
 
         lable.classList.add('text-danger');
+    }
+}
+
+function persianDateDetails(dateP) {
+    if (dateP) {
+        document.getElementById('year_P').innerText = `Year : ${Year_P} `;
+        document.getElementById('month_P').innerText = `Month : ${Month_P.toString().padStart(2, '0')} `;
+        document.getElementById('day_P').innerText = `Day : ${Day_P.toString().padStart(2, '0')} `;
+        document.getElementById('date_P').innerText = `Date : ${Day_P.toString().padStart(2, '0')}/${Month_P.toString().padStart(2, '0')}/${Year_P}`;
+    } else {
+        document.getElementById('year_P').innerText = `Year : `;
+        document.getElementById('month_P').innerText = `Month : `;
+        document.getElementById('day_P').innerText = `Day : `;
+        document.getElementById('date_P').innerText = `Date : `;
     }
 }
