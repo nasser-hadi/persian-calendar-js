@@ -1,26 +1,27 @@
 // Notice : 
 // G stands for of Gregorian Date
 // P stands for of Persian , Shamsi or Jalali Date
+"use strict";
 
 let dateValue;
 
 let Year_G = 0;
 let Month_G = 0;
 let Day_G = 0;
+let Week_G = 0;
+let Year_P = 0;
+let Month_P = 0;
+let Day_P = 0;
 
-var Year_P = 0;
-var Month_P = 0;
-var Day_P = 0;
-
-var Sum_G = 0; // Total days of the Gregorian months since the beginning of the year
-var Sum_P = 0; // Total days of the Jalali months since the beginning of the year
+let Sum_G = 0; // Total days of the Gregorian months since the beginning of the year
+let Sum_P = 0; // Total days of the Jalali months since the beginning of the year
 
 var b = 0;
 
 const ND = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-var NMM = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-var NWM = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+const NMM = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const NWM = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 document.querySelector('#datePicker').addEventListener('change', function (event) {
 
@@ -40,7 +41,8 @@ document.querySelector('#datePicker').addEventListener('change', function (event
         let date = new Date(dateValue);
         Year_G = date.getFullYear();
         Month_G = date.getMonth() + 1; // Months are zero-based
-        Day_G = date.getDate();
+        Day_G = date.getDate(); // Day of the month
+        Week_G = date.getDay(); // Day of the week
 
         getPersianCalendar();
     }
@@ -107,13 +109,15 @@ function gregorianDateDetails(dateG) {
         document.getElementById('year_G').innerText = `Year : ${Year_G} `;
         document.getElementById('month_G').innerText = `Month : ${Month_G.toString().padStart(2, '0')} `;
         document.getElementById('day_G').innerText = `Day : ${Day_G.toString().padStart(2, '0')} `;
-        document.getElementById('date_G').innerText = `Date : ${NMM[Month_G-1]} ${Day_G.toString().padStart(2, '0')} - ${Year_G} `;
+        document.getElementById('week_G').innerText = `D-Week : ${NWM[Week_G]} `;
+        document.getElementById('date_G').innerText = `Date : ${NWM[Week_G]}, ${NMM[Month_G - 1]} ${Day_G.toString().padStart(2, '0')}, ${Year_G} `;
 
         lable.classList.remove('text-danger');
     } else {
         document.getElementById('year_G').innerText = `Year : `;
         document.getElementById('month_G').innerText = `Month : `;
         document.getElementById('day_G').innerText = `Day : `;
+        document.getElementById('week_G').innerText = `D-Week : `;
         document.getElementById('date_G').innerText = `Date : `;
 
         lable.classList.add('text-danger');
