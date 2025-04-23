@@ -129,7 +129,7 @@ function persianDateDetails(dateP) {
         document.getElementById('year_P').innerText = `Year : ${Year_P} `;
         document.getElementById('month_P').innerText = `Month : ${Month_P.toString().padStart(2, '0')} `;
         document.getElementById('day_P').innerText = `Day : ${Day_P.toString().padStart(2, '0')} `;
-        document.getElementById('date_P').innerText = `Date : ${Day_P.toString().padStart(2, '0')}/${Month_P.toString().padStart(2, '0')}/${Year_P}`;
+        document.getElementById('date_P').innerText = `Date : ${Year_P}/${Month_P.toString().padStart(2, '0')}/${Day_P.toString().padStart(2, '0')}`;
     } else {
         document.getElementById('year_P').innerText = `Year : `;
         document.getElementById('month_P').innerText = `Month : `;
